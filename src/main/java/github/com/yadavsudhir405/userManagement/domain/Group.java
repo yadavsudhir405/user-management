@@ -14,13 +14,17 @@ import javax.persistence.*;
  */
 @JsonPropertyOrder({"id","name"})
 @Entity
-@Table
+@Table(name = "IGroup")
 public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private final String name;
+    private  String name;
+
+    protected Group(){
+
+    }
 
     @JsonCreator
     public Group(@JsonProperty(value = "name") String name) {

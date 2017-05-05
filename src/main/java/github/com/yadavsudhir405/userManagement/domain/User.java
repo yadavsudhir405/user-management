@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 /**
  * @author sudhir
@@ -13,17 +12,21 @@ import java.time.LocalDate;
  *         Project:usermanagement
  */
 @Entity
-@Table
+@Table(name = "IUSER")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
-    private LocalDate joinedDate;
+    //private String joinedDate;
 
+    protected User(){
+
+    }
     @JsonCreator
-    public User(@JsonProperty(value = "First Name") String firstName,@JsonProperty(value = "Last Name") String
+    public User(@JsonProperty(value = "firstName") String firstName, @JsonProperty(value = "lastName") String
             lasName) {
         this.firstName = firstName;
         this.lastName = lasName;
@@ -41,30 +44,9 @@ public class User {
         return lastName;
     }
 
-    public LocalDate getJoinedDate() {
+   /* public String getJoinedDate() {
         return joinedDate;
-    }
+    }*/
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        return joinedDate != null ? joinedDate.equals(user.joinedDate) : user.joinedDate == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (joinedDate != null ? joinedDate.hashCode() : 0);
-        return result;
-    }
 }
