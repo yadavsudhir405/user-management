@@ -1,7 +1,9 @@
 package github.com.yadavsudhir405.userManagement.controller;
 
 import github.com.yadavsudhir405.userManagement.domain.Group;
+import github.com.yadavsudhir405.userManagement.domain.User;
 import github.com.yadavsudhir405.userManagement.services.GroupService;
+import github.com.yadavsudhir405.userManagement.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,11 @@ public class GroupController {
 
     private final GroupService groupService;
 
-    public GroupController(GroupService groupService) {
+    private final UserService userService;
+
+    public GroupController(GroupService groupService,UserService userService) {
         this.groupService = groupService;
+        this.userService=userService;
     }
 
     @PostMapping
@@ -45,6 +50,11 @@ public class GroupController {
     @DeleteMapping(path="name/{name}")
     public void deleteByName(@PathVariable String name){
         groupService.removeByName(name);
+    }
+
+    @GetMapping(path = "/{id}/users")
+    public List<User> getAllUserFromGroup(@PathVariable String id){
+        return userService.findByGroup(Long.valueOf(id));
     }
 
 }

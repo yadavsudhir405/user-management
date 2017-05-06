@@ -1,8 +1,10 @@
 package github.com.yadavsudhir405.userManagement.services;
 
+import github.com.yadavsudhir405.userManagement.domain.Group;
 import github.com.yadavsudhir405.userManagement.domain.User;
 import github.com.yadavsudhir405.userManagement.domain.UserRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -17,10 +19,13 @@ public class UserServiceImpl implements UserService {
 
     private RemoteUserOutStandingService remoteUserOutStandingService;
     private final UserRepository userRepository;
+    private final GroupService groupService;
 
-    public UserServiceImpl(UserRepository userRepository,RemoteUserOutStandingService remoteUserOutStandingService) {
+    public UserServiceImpl(UserRepository userRepository,RemoteUserOutStandingService remoteUserOutStandingService,
+                           GroupService groupService) {
         this.userRepository = userRepository;
         this.remoteUserOutStandingService=remoteUserOutStandingService;
+        this.groupService=groupService;
     }
 
     @Override
@@ -51,5 +56,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> findByGroup(Long id) {
+        Assert.notNull(id,"Group id can't be null");
+        Group group=groupService.findById(id);
+        return userRepository.findByGroup(group);
     }
 }

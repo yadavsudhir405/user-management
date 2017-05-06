@@ -16,4 +16,5 @@ public interface UserService {
     User findById(Long id);
     List<User> findByFirstName(String name);
     List<User> findAll();
+    List<User> findByGroup(Long id);
 }

@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class RemoteUserOutStandingService {
     private static final Logger LOGGER= LoggerFactory.getLogger(RemoteUserOutStandingService.class);
     private final RestTemplate restTemplate;
-    private static final String URL="http";
+    private static final String URL="http//10.132.127.131:8080/";
     public RemoteUserOutStandingService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
