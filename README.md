@@ -12,3 +12,31 @@
 * This application handles creating user,groups and mapping users to group,updating user etc..CRUD on User and Group
 * Reports on Users such listing all users to particular group.
 
+# List of few end-points with test data:
+* http://localhost:9999/groups with GET list all groups
+* http://localhost:9999/groups with POST save Group,
+ Request Body:
+ {
+   "name":"Admin"
+ }
+
+ Expected Response:
+ {
+ "id": 1,
+ "name": "Admin"
+ }
+ * localhost:9999/users with GET list all users
+ * localhost:9999/users/ with POST
+ Request Body:
+ {
+  "firstName":"Jhon",
+  "lastName":"Smith"
+ }
+
+ Expected Response:
+ {
+ "firstName": "Jhon",
+ "lastName": "Smith",
+ "id": 1,
+ "group": null
+}
