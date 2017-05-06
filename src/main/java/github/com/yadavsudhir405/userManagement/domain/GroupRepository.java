@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface GroupRepository extends JpaRepository<Group,Long> {
+    Group findById(Long id);
+    Group findByName(String name);
+    Long removeByName(String name);
 }
