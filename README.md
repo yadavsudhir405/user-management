@@ -77,4 +77,19 @@
              }
     }
   ```
- 
+ * List All users of a particular group
+  http://localhost:9999/users/groups/{1} with GET request
+  
+  Expected Output:
+  ```json
+  [
+    {
+      "firstName": "Jhon",
+      "lastName": "Smith",
+      "id": 1,
+      "group":{
+         "id": 1,
+         "name": "Admin"
+      }
+}]
+  ```
