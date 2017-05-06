@@ -59,9 +59,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByGroup(Long id) {
-        Assert.notNull(id,"Group id can't be null");
-        Group group=groupService.findById(id);
+    public List<User> findByGroup(Group group) {
+        Assert.notNull(group,"Group can't be null");
         return userRepository.findByGroup(group);
     }
+
+
 }

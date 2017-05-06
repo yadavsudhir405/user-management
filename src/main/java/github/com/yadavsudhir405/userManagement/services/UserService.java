@@ -1,5 +1,6 @@
 package github.com.yadavsudhir405.userManagement.services;
 
+import github.com.yadavsudhir405.userManagement.domain.Group;
 import github.com.yadavsudhir405.userManagement.domain.User;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface UserService {
     User findById(Long id);
     List<User> findByFirstName(String name);
     List<User> findAll();
-    List<User> findByGroup(Long id);
+    List<User> findByGroup(Group group);
 }
