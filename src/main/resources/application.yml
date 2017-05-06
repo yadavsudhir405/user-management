@@ -10,7 +10,7 @@ spring:
     show-sql: true
     generate-ddl: true
   datasource:
-    url: jdbc:postgresql://10.132.127.131:5432/user-management
+    url: jdbc:postgresql://localhost:5432/user-management
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
