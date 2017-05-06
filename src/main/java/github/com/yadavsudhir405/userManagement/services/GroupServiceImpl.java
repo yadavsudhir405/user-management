@@ -3,7 +3,7 @@ package github.com.yadavsudhir405.userManagement.services;
 import github.com.yadavsudhir405.userManagement.domain.Group;
 import github.com.yadavsudhir405.userManagement.domain.GroupRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -14,7 +14,6 @@ import java.util.List;
  *         Project:usermanagement
  */
 @Component
-@Transactional
 public class GroupServiceImpl implements GroupService {
 
     private final GroupRepository groupRepository;
@@ -25,6 +24,8 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group create(Group group) {
+        Assert.notNull(group,"group can't be empty");
+        Assert.notNull(group.getName(),"Group name can't be empty");
         return groupRepository.save(group);
     }
 
@@ -45,6 +46,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public void remove(Group group) {
+
         groupRepository.delete(group);
     }
 

@@ -30,12 +30,16 @@ public class UserController {
 
     @PostMapping
     public User add(@RequestBody User user){
-
         return userService.register(user);
     }
     @GetMapping
     public List<User> getAll(){
         return userService.findAll();
+    }
+
+    @PutMapping
+    public User updateUser(@RequestBody User user){
+        return userService.update(user);
     }
     @GetMapping(path = "/groups/{id}")
     public List<User> usersByGroup(@PathVariable Long id){

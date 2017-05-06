@@ -1,19 +1,19 @@
 spring:
   application:
     name: user-management
-  jpa:
-    database: postgresql
-    hibernate:
-      ddl-auto: create
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
-    generate-ddl: true
-  datasource:
-    url: jdbc:postgresql://10.132.127.131:5432/user-management
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    database: postgresql
+#    hibernate:
+#      ddl-auto: create
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#    show-sql: true
+#    generate-ddl: true
+#  datasource:
+#    url: jdbc:postgresql://127.0.0.1:5432/user-management
+#    username: postgres
+#    password: postgres
+#    driver-class-name: org.postgresql.Driver
 
 server:
   port: 9999

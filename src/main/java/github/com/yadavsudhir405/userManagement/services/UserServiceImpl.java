@@ -3,6 +3,8 @@ package github.com.yadavsudhir405.userManagement.services;
 import github.com.yadavsudhir405.userManagement.domain.Group;
 import github.com.yadavsudhir405.userManagement.domain.User;
 import github.com.yadavsudhir405.userManagement.domain.UserRepository;
+import github.com.yadavsudhir405.userManagement.exception.GroupNotFoundException;
+import github.com.yadavsudhir405.userManagement.exception.UserNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -30,13 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
-        Long groupId=user.getGroupId();
-        Group group;
-        if(groupId!=null){
-            group=groupService.findById(groupId);
-            user.setGroup(group);
-        }
-
         return userRepository.save(user);
     }
 
@@ -69,6 +64,31 @@ public class UserServiceImpl implements UserService {
     public List<User> findByGroup(Group group) {
         Assert.notNull(group,"Group can't be null");
         return userRepository.findByGroup(group);
+    }
+
+    @Override
+    public User update(User user) {
+        Assert.notNull(user,"user can't be empty");
+        Assert.notNull(user.getId(),"user-id can't be empty");
+        validateForValidUser(user);
+        validateForValidGroup(user);
+        return userRepository.save(user);
+    }
+
+    private void validateForValidUser(User user){
+        User user1=userRepository.findById(user.getId());
+        if(user1==null){
+            throw new UserNotFoundException(user.getId(),String.format("User with id %s not found",user.getId()));
+        }
+    }
+
+    private void validateForValidGroup(User user) {
+        Group group=user.getGroup();
+        Group dbGroup=groupService.findById(group.getId());
+        if(dbGroup==null){
+            throw new GroupNotFoundException(group.getId(),String.format("Group with id %s not found ",group
+                    .getId()));
+        }
     }
 
 

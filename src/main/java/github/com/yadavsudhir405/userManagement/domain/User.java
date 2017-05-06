@@ -59,15 +59,15 @@ public class User {
         return group;
     }
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+   /* @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getGroupId() {
         return groupId;
     }
-    
+
     public void setGroupId(Long groupId) {
         this.groupId = groupId;
     }
-
+*/
     public void setGroup(Group group) {
         this.group = group;
     }

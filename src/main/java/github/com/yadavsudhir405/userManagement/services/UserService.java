@@ -18,4 +18,5 @@ public interface UserService {
     List<User> findByFirstName(String name);
     List<User> findAll();
     List<User> findByGroup(Group group);
+    User update(User user);
 }
