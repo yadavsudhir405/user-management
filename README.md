@@ -17,10 +17,10 @@
 * http://localhost:9999/groups with POST save Group,
  Request Body:
  ```json
- {
-   "name":"Admin"
- }
- ```json
+  {
+    "name":"Admin"
+  }
+  ```json
  
 
  Expected Response:
@@ -30,10 +30,7 @@
  "name": "Admin"
  }
    ```json
- {
- "id": 1,
- "name": "Admin"
- }
+ 
  * localhost:9999/users with GET list all users
  * localhost:9999/users/ with POST
  Request Body:
