@@ -32,11 +32,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user) {
-
-    }
-
-    @Override
     public User findById(Long id) {
         return userRepository.findById(id);
     }

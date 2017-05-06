@@ -13,7 +13,6 @@ import java.util.List;
 public interface UserService {
     User register(User user);
     void remove(User user);
-    void update(User user);
     User findById(Long id);
     List<User> findByFirstName(String name);
     List<User> findAll();

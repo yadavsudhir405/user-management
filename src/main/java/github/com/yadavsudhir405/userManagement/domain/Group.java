@@ -3,6 +3,7 @@ package github.com.yadavsudhir405.userManagement.domain;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
 
@@ -28,6 +29,7 @@ public class Group {
 
     @JsonCreator
     public Group(@JsonProperty(value = "name") String name) {
+        Assert.notNull(name,"name can't be empty");
         this.name = name;
     }
 
