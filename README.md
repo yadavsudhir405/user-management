@@ -20,7 +20,7 @@
   {
     "name":"Admin"
   }
-  ```json
+  ```
  
 
  Expected Response:
@@ -29,7 +29,7 @@
  "id": 1,
  "name": "Admin"
  }
-   ```json
+   ```
  
  * localhost:9999/users with GET list all users
  * localhost:9999/users/ with POST
@@ -51,5 +51,5 @@
  "group": null
 }
 
- ```json
+ ```
  
