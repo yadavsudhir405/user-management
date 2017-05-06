@@ -50,6 +50,10 @@ public class UserTestSuite {
 
     @Test
     public void saveUserWithGroupShouldSave(){
-        
+        Group group=testEntityManager.persistAndFlush(new Group("Admin"));
+        User user=new User("Sudhir","Yadav");
+        user.setGroup(group);
+        User actualUserFromDb=testEntityManager.persistAndFlush(user);
+        Assertions.assertThat(actualUserFromDb.getGroup().getId()).isEqualTo(group.getId());
     }
 }

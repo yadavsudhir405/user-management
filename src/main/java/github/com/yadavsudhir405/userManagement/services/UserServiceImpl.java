@@ -15,10 +15,12 @@ import java.util.List;
 @Component
 public class UserServiceImpl implements UserService {
 
+    private RemoteUserOutStandingService remoteUserOutStandingService;
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository,RemoteUserOutStandingService remoteUserOutStandingService) {
         this.userRepository = userRepository;
+        this.remoteUserOutStandingService=remoteUserOutStandingService;
     }
 
     @Override
@@ -28,7 +30,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void remove(User user) {
-        userRepository.delete(user);
+        if(remoteUserOutStandingService.userIsHavingOutStandingBalance(user.getId())){
+            throw new RuntimeException("User is having outstanding balance so can bt delelted");
+        }else {
+            userRepository.delete(user);
+        }
+
     }
 
     @Override
