@@ -16,11 +16,20 @@
 * http://localhost:9999/groups with GET list all groups
 * http://localhost:9999/groups with POST save Group,
  Request Body:
+ ```json
  {
    "name":"Admin"
  }
+ ```json
+ 
 
  Expected Response:
+  ```json
+  {
+ "id": 1,
+ "name": "Admin"
+ }
+   ```json
  {
  "id": 1,
  "name": "Admin"
@@ -37,9 +46,13 @@
  
 
  Expected Response:
+ ```json
  {
  "firstName": "Jhon",
  "lastName": "Smith",
  "id": 1,
  "group": null
 }
+
+ ```json
+ 
