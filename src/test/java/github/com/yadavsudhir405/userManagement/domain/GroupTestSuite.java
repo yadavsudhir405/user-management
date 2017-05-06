@@ -27,12 +27,6 @@ public class GroupTestSuite {
     private TestEntityManager testEntityManager;
 
     @Test
-    public void saveGroupWithEmptyNameShouldThrowIllegalArgumentException(){
-        thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("name can't be empty");
-        Group group=new Group(null);
-    }
-    @Test
     public void saveGroupWithGroupNameShouldSaveGroup(){
         Group group=this.testEntityManager.persistFlushFind(new Group("Admin"));
         Assertions.assertThat(group.getName()).isNotEmpty();

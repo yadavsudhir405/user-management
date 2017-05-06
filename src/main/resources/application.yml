@@ -1,6 +1,7 @@
 spring:
   application:
     name: user-management
+#Enable below commented lines to use postgress as databases,currently H2 in-memeory database is enabled
 #  jpa:
 #    database: postgresql
 #    hibernate:
