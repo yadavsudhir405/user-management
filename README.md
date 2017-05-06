@@ -28,10 +28,13 @@
  * localhost:9999/users with GET list all users
  * localhost:9999/users/ with POST
  Request Body:
- {
+ ```json
+{
   "firstName":"Jhon",
   "lastName":"Smith"
  }
+```
+ 
 
  Expected Response:
  {
