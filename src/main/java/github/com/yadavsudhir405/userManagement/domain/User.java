@@ -1,7 +1,6 @@
 package github.com.yadavsudhir405.userManagement.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.util.Assert;
@@ -16,6 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "IUSER")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     @Id
@@ -29,7 +29,10 @@ public class User {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Group group;
 
-    protected User(){
+    @Transient
+    private Long groupId;
+
+    public User(){
 
     }
     @JsonCreator
@@ -56,12 +59,19 @@ public class User {
         return group;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Long getGroupId() {
+        return groupId;
+    }
+    
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
+
     public void setGroup(Group group) {
         this.group = group;
     }
-/* public String getJoinedDate() {
-        return joinedDate;
-    }*/
+
 
 
 }

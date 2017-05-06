@@ -30,6 +30,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
+        Long groupId=user.getGroupId();
+        Group group;
+        if(groupId!=null){
+            group=groupService.findById(groupId);
+            user.setGroup(group);
+        }
+
         return userRepository.save(user);
     }
 

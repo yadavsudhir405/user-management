@@ -1,6 +1,7 @@
 package github.com.yadavsudhir405.userManagement.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.util.Assert;
@@ -16,6 +17,7 @@ import javax.persistence.*;
 @JsonPropertyOrder({"id","name"})
 @Entity
 @Table(name = "IGroup")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Group {
 
     @Id
