@@ -88,6 +88,7 @@ public class UserServiceImpl implements UserService {
         if(dbGroup==null){
             throw new GroupNotFoundException(group.getId(),String.format("Group with id %s not found ",group
                     .getId()));
+
         }
     }
 
