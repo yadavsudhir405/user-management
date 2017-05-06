@@ -31,8 +31,8 @@
  }
    ```
  
- * localhost:9999/users with GET list all users
- * localhost:9999/users/ with POST
+ * http://localhost:9999/users with GET list all users
+ * http://localhost:9999/users/ with POST
  Request Body:
  ```json
 {
@@ -50,6 +50,31 @@
  "id": 1,
  "group": null
 }
-
  ```
+ * Updating users with existing Group:
+  http://localhost:9999/users/ with PUT
+  
+  Request Body:
+  ```json
+  {
+  "id":1,
+  "firstName":"Jhon",
+  "lastName":"Smith",
+  "group":{
+    "id":1
+  }
+}
+  ```
+  Expected Response:
+  ```json
+   {
+     "firstName": "Jhon",
+     "lastName": "Smith",
+     "id": 1,
+     "group":{
+             "id": 1,
+             "name": "Admin"
+             }
+    }
+  ```
  
