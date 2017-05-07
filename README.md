@@ -4,6 +4,7 @@
 # System-Requirements
 * Jre 1.8 installed
 * Intellij-Ide or eclipse installed.
+* Needs to have latest version of Maven installed
 # Project-Setup
 * Clone or Download this project.
 * Import as Maven project to your workspace.
